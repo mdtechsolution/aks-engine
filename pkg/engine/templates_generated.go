@@ -41453,6 +41453,10 @@ $global:DockerVersion = "{{WrapAsParameter "windowsDockerVersion"}}"
 
 ## ContainerD Usage
 $global:ContainerRuntime = "{{WrapAsParameter "containerRuntime"}}"
+# AKS only supports to use containerd as ContainerRuntime for Windows 2004
+if ($([System.Environment]::OSVersion.Version).Build -eq "19041") {
+    $global:ContainerRuntime = "containerd"
+}
 $global:DefaultContainerdRuntimeHandler = "{{WrapAsParameter "defaultContainerdRuntimeHandler"}}"
 $global:HypervRuntimeHandlers = "{{WrapAsParameter "hypervRuntimeHandlers"}}"
 
