@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "kubecluster-e832"
+    labels:
+        app: "kubecluster-e832"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: default-kubecluster-e832.8fda7cab56d847debec0.centralindia.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "kubecluster-e832"
+                servicePort: 80
