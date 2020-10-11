@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "kubecluster-e832"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "kubecluster-e832"
+  template:
+    metadata:
+      labels:
+        app: "kubecluster-e832"
+    spec:
+      containers:
+        - name: "kubecluster-e832"
+          image: "mmregi.azurecr.io/kubecluster"
+          ports:
+          - containerPort: 80
